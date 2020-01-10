@@ -10,6 +10,16 @@ import numpy as np
 
 __version__="1.0.0"
 
+def fast_all_with_axis(arr,axis):
+    """faa.all([list of boolean ndarrays]), returns true where at least one element is true in an ndarray at that position, on a given axis
+    """
+    return fast_logic(np.moveaxis(arr,axis,0), np.logical_and)
+
+def fast_any_with_axis(arr,axis):
+    """faa.any([list of boolean ndarrays],axis), returns true where at least one element is true in an ndarray at that position, on the given axis.
+    """
+    return fast_logic(np.moveaxis(arr,axis,0), np.logical_or)
+
 def any(inputs):
   """faa.any([list of boolean ndarrays]), returns true where at least one element is true in an ndarray at that position.
   """
